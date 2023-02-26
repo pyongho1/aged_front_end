@@ -1,6 +1,9 @@
 /* ---------==== custom forms ====--------- */
 
-
+export interface PostFormData {
+  title: string;
+  date: Date;
+}
 
 /* ---------===== auth forms =====--------- */
 

@@ -1,41 +1,73 @@
-// npm modules 
-import { useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+// npm modules
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 // page components
-import Signup from './pages/Signup/Signup'
-import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
-import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
+import Landing from "./pages/Landing/Landing";
+import Profiles from "./pages/Profiles/Profiles";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 
 // components
-import NavBar from './components/NavBar/NavBar'
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import NavBar from "./components/NavBar/NavBar";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 // services
-import * as authService from './services/authService'
+import * as authService from "./services/authService";
+import * as postService from "./services/postService";
 
 // stylesheets
-import './App.css'
+import "./App.css";
 
 // types
-import { User } from './types/models'
+import { User, Post } from "./types/models";
+import PostPage from "./pages/Post/PostPage";
+import { PostFormData } from "./types/forms";
+import PostForm from "./pages/PostForm/PostForm";
 
 function App(): JSX.Element {
-  const navigate = useNavigate()
-  
-  const [user, setUser] = useState<User | null>(authService.getUser())
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState<User | null>(authService.getUser());
+
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  // FOR POSTING FORM
+  const handlePost = async (formData: PostFormData): Promise<void> => {
+    try {
+      const createPost = await postService.create(formData);
+      console.log("CREATE POST", createPost);
+      setPosts(
+        posts.map((post) => (post.id === createPost.id ? createPost : post))
+      );
+      // setPosts([createPost, ...posts]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleLogout = (): void => {
-    authService.logout()
-    setUser(null)
-    navigate('/')
-  }
+    authService.logout();
+    setUser(null);
+    navigate("/");
+  };
 
   const handleAuthEvt = (): void => {
-    setUser(authService.getUser())
-  }
+    setUser(authService.getUser());
+  };
+
+  useEffect((): void => {
+    const fetchPosts = async (): Promise<void> => {
+      try {
+        const postData: Post[] = await postService.getAllPosts();
+        setPosts(postData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    user ? fetchPosts() : setPosts([]);
+  }, [user]);
 
   return (
     <>
@@ -66,9 +98,25 @@ function App(): JSX.Element {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/posts"
+          element={
+            <ProtectedRoute user={user}>
+              <PostPage posts={posts} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoute user={user}>
+              <PostForm handlePost={handlePost} />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
