@@ -25,6 +25,7 @@ import { User, Post } from "./types/models";
 import PostPage from "./pages/Post/PostPage";
 import { PostFormData } from "./types/forms";
 import PostForm from "./pages/PostForm/PostForm";
+import UpdatePost from "./pages/UpdatePost/UpdatePost";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -112,6 +113,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <PostForm handlePost={handlePost} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/update"
+          element={
+            <ProtectedRoute user={user}>
+              <UpdatePost />
             </ProtectedRoute>
           }
         />
