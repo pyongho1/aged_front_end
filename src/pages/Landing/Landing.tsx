@@ -4,6 +4,8 @@ import styles from "./Landing.module.css";
 // types
 import { User } from "../../types/models";
 
+import { Link } from "react-router-dom";
+
 interface LandingProps {
   user: User | null;
 }
@@ -14,11 +16,23 @@ const Landing = (props: LandingProps): JSX.Element => {
   return (
     <>
       <main className={styles.container}>
-        <h1>hello, {user ? user.name : "friend"}</h1>
+        <div className={styles.leftBox}>
+          <h1>Hi, {user ? user.name : "friend"}! 👋</h1>
+          <p>Start keeping track of your special moments</p>
+        </div>
+        <div></div>
       </main>
       <div className={styles.midContainer}>
-        <button>1</button>
-        <button>2</button>
+        <button>
+          <Link to="/create" className={styles.midContainerBtn}>
+            CREATE TIME
+          </Link>
+        </button>
+        <button>
+          <Link to="/posts" className={styles.midContainerBtn}>
+            SEE TIME
+          </Link>
+        </button>
         <button>3</button>
       </div>
     </>

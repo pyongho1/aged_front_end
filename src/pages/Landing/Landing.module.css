@@ -1,11 +1,17 @@
 .container {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
+  /* flex-direction: column; */
   padding-top: 100px;
   height: 600px;
-  background-image: url("../../assets/landing1.jpeg");
+  background-image: url("../../assets/landing3.jpeg");
   background-size: cover;
+  color: #555;
+}
+
+.leftBox {
+  padding-left: 70px;
 }
 
 .midContainer {
@@ -14,6 +20,12 @@
   height: 100px;
   align-items: center;
   background: linear-gradient(to right, #14c1c7, #34d6ce);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.midContainerBtn {
+  color: #2aa1b0;
 }
 
 .midContainer > button {
@@ -27,4 +39,5 @@
   font-weight: 500;
   line-height: 40px;
   box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+  cursor: pointer;
 }
