@@ -6,15 +6,53 @@
   height: 200px; */
   display: flex;
   justify-content: center;
+  width: 30%;
 }
 
 .box {
   display: flex;
+  position: relative;
+  overflow: hidden;
   flex-direction: column;
-  border: 1px solid;
+  /* border: 1px solid; */
   width: 300px;
   height: 300px;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  background-color: #b6fcd5;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  margin-bottom: 30px;
+}
+
+.box > button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 100%;
+  /* border-radius: 0 50% 50% 0; */
+  background: none;
+  border: none;
+}
+
+.box > button:hover {
+  background-color: rgba(227, 121, 121, 0.805);
+  /* box-shadow: 0 0 15px rgba(223, 55, 55, 0.805); */
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.box > button:hover::before {
+  content: "X";
 }

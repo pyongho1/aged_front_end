@@ -38,8 +38,8 @@ const PostCard = (props: PostCardProps): JSX.Element => {
     <div className={styles.container}>
       <div className={styles.box}>
         <h3>{post.title}</h3>
-        <p>{numDays}</p>
-        {user && <button onClick={handleDelete}>DELETE</button>}
+        <p>{numDays} days past</p>
+        {user && <button onClick={handleDelete}></button>}
       </div>
     </div>
   );

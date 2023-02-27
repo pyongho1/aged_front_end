@@ -43,7 +43,7 @@ const PostForm = (props: PostProps) => {
       <h1>Post Form</h1>
 
       <form onSubmit={handleSubmit} autoComplete="off">
-        <label htmlFor="title">Title</label>
+        <label htmlFor="title">What day is this for?</label>
         <input
           type="text"
           name="title"
@@ -51,7 +51,7 @@ const PostForm = (props: PostProps) => {
           value={title}
           onChange={handleChange}
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">Starting Date</label>
         <input
           type="date"
           name="date"
