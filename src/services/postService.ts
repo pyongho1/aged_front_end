@@ -37,4 +37,45 @@ async function create(formData: PostFormData): Promise<Post> {
   }
 }
 
-export { getAllPosts, create };
+// async function deletePost(id: number): Promise<Post> {
+//   try {
+//     const res = await fetch(`${BASE_URL}/${id}`, {
+//       method: "DELETE",
+//       headers: {
+//         Authorization: `Bearer ${tokenService.getToken()}`,
+//       },
+//     });
+//     return (await res.json()) as Post;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+
+async function deletePost(id: number) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${tokenService.getToken()}`,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// const deletePost = async (id: number): Promise<Post | undefined> => {
+//   try {
+//     const res = await fetch(`${BASE_URL}/${id}`, {
+//       method: "DELETE",
+//       headers: { Authorization: `Bearer ${tokenService.getToken()}` },
+//     });
+//     return res.json();
+//   } catch (error) {
+//     throw error;
+//   }
+// };
+
+export { getAllPosts, create, deletePost };

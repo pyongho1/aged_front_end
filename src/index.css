@@ -21,8 +21,10 @@ nav {
   position: fixed;
   /* padding: 12px 20px; */
   align-items: center;
-  background: white;
-  border-bottom: 1px solid rgb(200, 200, 200);
+  /* background: white; */
+  background: rgba(52, 214, 206, 0.85);
+  /* border-bottom: 1px solid rgb(200, 200, 200); */
+  color: white;
 }
 
 nav img {
@@ -49,6 +51,7 @@ a {
   color: black;
   font-weight: 600;
   text-decoration: none;
+  color: white;
 }
 
 @media only screen and (max-width: 414px) {

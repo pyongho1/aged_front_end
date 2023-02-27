@@ -38,9 +38,10 @@ function App(): JSX.Element {
     try {
       const createPost = await postService.create(formData);
       console.log("CREATE POST", createPost);
-      setPosts(
-        posts.map((post) => (post.id === createPost.id ? createPost : post))
-      );
+      // setPosts(
+      //   posts.map((post) => (post.id === createPost.id ? createPost : post))
+      // );
+      setPosts((prevPosts) => [createPost, ...prevPosts]);
       // setPosts([createPost, ...posts]);
     } catch (error) {
       console.log(error);
@@ -102,7 +103,7 @@ function App(): JSX.Element {
           path="/posts"
           element={
             <ProtectedRoute user={user}>
-              <PostPage posts={posts} />
+              <PostPage user={user} posts={posts} />
             </ProtectedRoute>
           }
         />
