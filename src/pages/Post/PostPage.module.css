@@ -6,10 +6,5 @@
   align-items: center;
 }
 
-.cardContainer {
-  height: 100vh;
-  margin-top: 100px;
-  display: flex;
-  flex-wrap: wrap; /* add wrap property to wrap contents to next row */
-  justify-content: center;
+@media only screen and (max-width: 900px) {
 }

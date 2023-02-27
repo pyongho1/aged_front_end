@@ -14,7 +14,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
 
   return (
     <nav>
-      <a href="#" className="logo">
+      <a href="/" className="logo">
         A G E D
       </a>
       {user ? (

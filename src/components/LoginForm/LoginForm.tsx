@@ -1,49 +1,49 @@
 // npm modules
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 // services
-import styles from './LoginForm.module.css'
+import styles from "./LoginForm.module.css";
 
 // stylesheets
-import * as authService from '../../services/authService'
+import * as authService from "../../services/authService";
 
 // types
-import { AuthFormProps } from '../../types/props'
-import { LoginFormData } from '../../types/forms'
-import { handleErrMsg } from '../../types/validators'
+import { AuthFormProps } from "../../types/props";
+import { LoginFormData } from "../../types/forms";
+import { handleErrMsg } from "../../types/validators";
 
 const LoginForm = (props: AuthFormProps): JSX.Element => {
-  const {updateMessage, handleAuthEvt} = props
-  const navigate = useNavigate()
+  const { updateMessage, handleAuthEvt } = props;
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<LoginFormData>({
-    email: '',
-    password: '',
-  })
+    email: "",
+    password: "",
+  });
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
-    updateMessage('')
-    setFormData({ ...formData, [evt.target.name]: evt.target.value })
-  }
+    updateMessage("");
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
 
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
-    evt.preventDefault()
+    evt.preventDefault();
     try {
-      await authService.login(formData)
-      handleAuthEvt()
-      navigate('/')
+      await authService.login(formData);
+      handleAuthEvt();
+      navigate("/");
     } catch (err) {
-      console.log(err)
-      handleErrMsg(err, updateMessage)
+      console.log(err);
+      handleErrMsg(err, updateMessage);
     }
-  }
+  };
 
-  const { email, password } = formData
+  const { email, password } = formData;
 
   const isFormInvalid = (): boolean => {
-    return !(email && password)
-  }
+    return !(email && password);
+  };
 
   return (
     <form
@@ -52,7 +52,9 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+        <label htmlFor="email" className={styles.label}>
+          Email
+        </label>
         <input
           type="text"
           id="email"
@@ -62,7 +64,9 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+        <label htmlFor="password" className={styles.label}>
+          Password
+        </label>
         <input
           type="password"
           id="password"
@@ -76,11 +80,11 @@ const LoginForm = (props: AuthFormProps): JSX.Element => {
           Log In
         </button>
         <Link to="/">
-          <button>Cancel</button>
+          <button className={styles.button}>Cancel</button>
         </Link>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;
