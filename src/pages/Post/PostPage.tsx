@@ -16,7 +16,10 @@ interface PostProps {
 const PostPage = (props: PostProps) => {
   const { posts, user } = props;
 
-  if (!posts.length) return <p>No posts yet...</p>;
+  if (!posts.length)
+    return (
+      <p className={styles.noPost}>Oh no! Seems like there is no post yet...</p>
+    );
 
   return (
     <div className={styles.container}>
