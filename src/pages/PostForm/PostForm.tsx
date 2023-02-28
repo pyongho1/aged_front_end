@@ -40,7 +40,7 @@ const PostForm = (props: PostProps) => {
 
   return (
     <div className={styles.container}>
-      <h1>Post Form</h1>
+      <h1 className={styles.firstHeading}>Enter in your Anniversary!</h1>
 
       <form onSubmit={handleSubmit} autoComplete="off">
         <label htmlFor="title">What day is this for?</label>
