@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // types
 import { Post } from "../../types/models";
@@ -10,6 +11,7 @@ import styles from "./PostCard.module.css";
 
 // services
 import * as postService from "../../services/postService";
+import Landing from "../../pages/Landing/Landing";
 
 interface PostCardProps {
   post: Post;
@@ -24,10 +26,20 @@ const PostCard = (props: PostCardProps): JSX.Element => {
   const handleDelete = async () => {
     try {
       await postService.deletePost(post.id);
+      setPosts(posts.filter((p) => p.id !== post.id));
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const handleUpdate = async () => {
+  //   try {
+  //     await postService.update(formData, post.id);
+  //     navigate(`/posts`);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const postDate = new Date(post.date);
   const currentDate = new Date();
@@ -39,7 +51,7 @@ const PostCard = (props: PostCardProps): JSX.Element => {
       <div className={styles.box}>
         <h3>{post.title}</h3>
         <p>{numDays} days past</p>
-        {user && <button onClick={handleDelete}></button>}
+        {user && <button className={styles.delBtn} onClick={handleDelete}></button>}
       </div>
     </div>
   );

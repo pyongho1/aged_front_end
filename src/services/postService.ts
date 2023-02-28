@@ -52,21 +52,37 @@ async function deletePost(id: number) {
   }
 }
 
-async function update(formData: PostFormData, post: Post): Promise<Post> {
-  const postId = post.id;
+async function update(post: Post): Promise<Post> {
   try {
-    const res = await fetch(`${BASE_URL}/${postId}`, {
+    const res = await fetch(`${BASE_URL}/${post.id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${tokenService.getToken()}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(post),
     });
     return (await res.json()) as Post;
   } catch (error) {
     throw error;
   }
 }
+
+// async function update(formData: PostFormData, post: Post): Promise<Post> {
+//   const postId = post.id;
+//   try {
+//     const res = await fetch(`${BASE_URL}/${postId}`, {
+//       method: "PUT",
+//       headers: {
+//         Authorization: `Bearer ${tokenService.getToken()}`,
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(formData),
+//     });
+//     return (await res.json()) as Post;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
 export { getAllPosts, create, deletePost, update };

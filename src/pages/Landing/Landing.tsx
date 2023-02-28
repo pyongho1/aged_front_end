@@ -25,15 +25,23 @@ const Landing = (props: LandingProps): JSX.Element => {
       <div className={styles.midContainer}>
         <button>
           <Link to="/create" className={styles.midContainerBtn}>
-            CREATE TIME
+            Create anniversary
           </Link>
         </button>
         <button>
           <Link to="/posts" className={styles.midContainerBtn}>
-            SEE TIME
+            Anniversary
           </Link>
         </button>
-        <button>3</button>
+        <button>
+          {user ? (
+            ""
+          ) : (
+            <Link to="/signup" className={styles.midContainerBtn}>
+              Create Account
+            </Link>
+          )}
+        </button>
       </div>
     </>
   );

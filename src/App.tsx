@@ -13,6 +13,11 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
+// pages
+import PostPage from "./pages/Post/PostPage";
+import PostForm from "./pages/PostForm/PostForm";
+import UpdatePost from "./pages/UpdatePost/UpdatePost";
+
 // services
 import * as authService from "./services/authService";
 import * as postService from "./services/postService";
@@ -22,10 +27,7 @@ import "./App.css";
 
 // types
 import { User, Post } from "./types/models";
-import PostPage from "./pages/Post/PostPage";
 import { PostFormData } from "./types/forms";
-import PostForm from "./pages/PostForm/PostForm";
-import UpdatePost from "./pages/UpdatePost/UpdatePost";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -39,15 +41,41 @@ function App(): JSX.Element {
     try {
       const createPost = await postService.create(formData);
       console.log("CREATE POST", createPost);
-      // setPosts(
-      //   posts.map((post) => (post.id === createPost.id ? createPost : post))
-      // );
       setPosts((prevPosts) => [createPost, ...prevPosts]);
-      // setPosts([createPost, ...posts]);
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const handleUpdate = async (formData: PostFormData) => {
+  //   // const updatedPost = await postService.update(formData);
+  //   const updatedPosts = await postService.getAllPosts();
+  //   setPosts(updatedPosts);
+  //   navigate("/posts");
+  // };
+
+  // const handleUpdate = async (
+  //   formData: PostFormData,
+  //   postId: number
+  // ): Promise<void> => {
+  //   try {
+  //     const updatedPost = await postService.update({ post });
+  //     console.log("UPDATED POST", updatedPost);
+  //     setPosts((prevPosts) =>
+  //       prevPosts.map((post) =>
+  //         post.id === updatedPost.id ? updatedPost : post
+  //       )
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const handleUpdate = async (updatedPost: Post) => {
+  //   const newPost = await postService.update(updatedPost);
+  //   setPosts(posts.map((post) => (post.id === newPost.id ? newPost : post)));
+  //   navigate("/posts");
+  // };
 
   const handleLogout = (): void => {
     authService.logout();
@@ -116,14 +144,14 @@ function App(): JSX.Element {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/update"
+        {/* <Route
+          path="/posts/:id/edit"
           element={
             <ProtectedRoute user={user}>
               <UpdatePost />
             </ProtectedRoute>
           }
-        />
+        /> */}
       </Routes>
     </>
   );

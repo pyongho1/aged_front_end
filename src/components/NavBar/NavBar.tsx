@@ -19,7 +19,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
       </a>
       {user ? (
         <ul>
-          <li>Welcome, {user.name}</li>
+          <li className="welcome">Welcome, {user.name}</li>
           <li>
             <NavLink to="/posts">Posts</NavLink>
           </li>
