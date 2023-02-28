@@ -16,7 +16,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // pages
 import PostPage from "./pages/Post/PostPage";
 import PostForm from "./pages/PostForm/PostForm";
-import UpdatePost from "./pages/UpdatePost/UpdatePost";
+// import UpdatePost from "./pages/UpdatePost/UpdatePost";
 
 // services
 import * as authService from "./services/authService";
