@@ -17,10 +17,11 @@ interface PostCardProps {
   post: Post;
   user: User | null;
   profile?: Profile;
+  handleDeletePost: (id: number) => void;
 }
 
 const PostCard = (props: PostCardProps): JSX.Element => {
-  const { post, user, profile } = props;
+  const { post, user, profile, handleDeletePost } = props;
   const navigate = useNavigate();
   const [posts, setPosts] = useState<Post[]>([]);
   // const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -36,15 +37,6 @@ const PostCard = (props: PostCardProps): JSX.Element => {
   //   };
   //   user ? fetchProfiles() : setProfiles([]);
   // }, [user]);
-
-  const handleDelete = async () => {
-    try {
-      await postService.deletePost(post.id);
-      setPosts(posts.filter((p) => p.id !== post.id));
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const postDate = new Date(post.date);
   const currentDate = new Date();
@@ -63,7 +55,10 @@ const PostCard = (props: PostCardProps): JSX.Element => {
         <h3>{post.title}</h3>
         <p>{numDays} days past</p>
         {user && (
-          <button className={styles.delBtn} onClick={handleDelete}></button>
+          <button
+            className={styles.delBtn}
+            onClick={() => handleDeletePost(post.id)}
+          ></button>
         )}
       </div>
     </div>

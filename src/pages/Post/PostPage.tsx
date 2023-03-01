@@ -12,10 +12,11 @@ interface PostProps {
   posts: Post[];
   user: User | null;
   profiles: Profile[];
+  handleDeletePost: (id: number) => Promise<void>;
 }
 
 const PostPage = (props: PostProps) => {
-  const { posts, user, profiles } = props;
+  const { posts, user, profiles, handleDeletePost } = props;
 
   if (!posts.length)
     return (
@@ -32,7 +33,13 @@ const PostPage = (props: PostProps) => {
             (profile: Profile) => profile.id === post.profileId
           );
           return (
-            <PostCard key={post.id} post={post} user={user} profile={profile} />
+            <PostCard
+              key={post.id}
+              post={post}
+              user={user}
+              profile={profile}
+              handleDeletePost={handleDeletePost}
+            />
           );
         })}
       </div>

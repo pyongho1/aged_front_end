@@ -52,19 +52,21 @@ async function deletePost(id: number) {
   }
 }
 
-async function update(post: Post): Promise<Post> {
+async function update(postId: number, formData: PostFormData) {
   try {
-    const res = await fetch(`${BASE_URL}/${post.id}`, {
+    const res = await fetch(`${BASE_URL}/${postId}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${tokenService.getToken()}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(post),
+      body: JSON.stringify(formData),
     });
     return (await res.json()) as Post;
+    // return res.json();
   } catch (error) {
     throw error;
+    console.log(error);
   }
 }
 

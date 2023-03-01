@@ -30,7 +30,7 @@
   font-size: 26px;
   /* border: 1px solid; */
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 5px 10px;
 }
 
@@ -64,4 +64,5 @@
 
 .profilePic {
   width: 50px;
+  border-radius: 50%;
 }

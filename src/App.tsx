@@ -30,6 +30,7 @@ import "./App.css";
 import { User, Post, Profile } from "./types/models";
 import { PostFormData } from "./types/forms";
 import Footer from "./components/Footer/Footer";
+import UpdatePost from "./pages/UpdatePost/UpdatePost";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -49,6 +50,12 @@ function App(): JSX.Element {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleDeletePost = async (id: number): Promise<void> => {
+    await postService.deletePost(id);
+    setPosts(posts.filter((post) => post.id !== id));
+    navigate("/posts");
   };
 
   const handleLogout = (): void => {
@@ -118,7 +125,7 @@ function App(): JSX.Element {
           path="/posts"
           element={
             <ProtectedRoute user={user}>
-              <PostPage user={user} posts={posts} profiles={profiles} />
+              <PostPage user={user} posts={posts} profiles={profiles} handleDeletePost={handleDeletePost} />
             </ProtectedRoute>
           }
         />
@@ -134,7 +141,7 @@ function App(): JSX.Element {
           path="/posts/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <UpdatePost />
+              <UpdatePost post={posts} />
             </ProtectedRoute>
           }
         /> */}
