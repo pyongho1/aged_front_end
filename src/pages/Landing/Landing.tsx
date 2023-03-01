@@ -5,6 +5,7 @@ import styles from "./Landing.module.css";
 import { User } from "../../types/models";
 
 import { Link } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 interface LandingProps {
   user: User | null;
@@ -25,7 +26,7 @@ const Landing = (props: LandingProps): JSX.Element => {
       <div className={styles.midContainer}>
         <button>
           <Link to="/create" className={styles.midContainerBtn}>
-            Create anniversary
+            Create
           </Link>
         </button>
         <button>
@@ -43,6 +44,7 @@ const Landing = (props: LandingProps): JSX.Element => {
           )}
         </button>
       </div>
+      <Footer />
     </>
   );
 };
