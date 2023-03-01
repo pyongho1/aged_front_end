@@ -24,11 +24,10 @@ const PostPage = (props: PostProps) => {
   return (
     <div className={styles.container}>
       <h2>See how many days have passed!</h2>
-      <p>⚠️Click on the left side of the sphere to delete</p>
+      <p>⚠️ Click on the left side of the sphere to delete</p>
       <div className={styles.cardContainer}>
         {posts.map((post: Post) => (
           <PostCard key={post.id} post={post} user={user} />
-          // <p>{post.title}</p>
         ))}
       </div>
     </div>
