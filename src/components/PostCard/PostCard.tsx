@@ -16,7 +16,7 @@ import Landing from "../../pages/Landing/Landing";
 interface PostCardProps {
   post: Post;
   user: User | null;
-  profile: Profile;
+  profile?: Profile;
 }
 
 const PostCard = (props: PostCardProps): JSX.Element => {
