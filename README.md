@@ -1,77 +1,41 @@
-# Decoupled PERN Stack with JWT Auth Template - Front End
+# AGED
 
-This is the front end of a decoupled PERN Stack app that includes JWT Authentication.
+Aged is an application designed to help you remember and track your special moments, such as anniversaries. By entering the date of your first special moment, you can easily keep track of the days that have passed since that day. With Aged, you'll never forget how long it has been since your special moment, and you can access this information whenever you need it.
 
-When combined with the back end found [here](https://github.com/SEI-Remote/decoupled-pern-jwt-auth-template-back-end-cjs), you'll have all you need to build a full stack PERN app!
+#
 
-Use this to go build things! 🚀
+## Getting Started
 
-## To Use This Template
+🖱️ [Click Here](https://aged-app.netlify.app/) to have access to my application.
 
-**Replace `<name-of-your-app-here>`, including the `<` and `>` in the commands below with the name of your app!**
+🔙 [Backend](https://github.com/pyongho1/aged_back_end) link.
 
-```bash
-git clone https://github.com/SEI-Remote/decoupled-pern-jwt-auth-template-front-end-ts <name-of-your-app-here>-front-end
-cd <name-of-your-app-here>-front-end
-code .
-```
+#
 
-With the project open in VS Code, open a terminal and run:
+## Screenshots
 
-```bash
-rm -rf .git
-```
+<img src="/public/aged_readme1.png" alt="Picture">
+<img src="/public/aged_readme2.png" alt="Picture">
 
-Here's what your command line output should like after this step (note that the indicator that we are in a git repository is gone!)
+#
 
-<img src="https://i.imgur.com/L47kNOZ.png" alt="The command line before and after running the rm -rf .git command. Before git:(main) is visible indiating that the directory contains a git repository, after the command it is not.">
+## Technologies Used
 
-Re-initialize a git repository:
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-```bash
-git init
-```
+#
 
-Create a repo for this project on GitHub and add that remote to your project with:
+## Next Steps [Ice Box] 🧊
 
-```bash
-git remote add origin your-repo-URL-here
-```
+- [ ] Implement Edit
+- [ ] Implement pictures so that user can upload their special photos as well
 
-Run `npm i` to fetch the template's dependencies:
+#
 
-```bash
-npm i
-```
-
-touch a `.env` file:
-
-```bash
-touch .env
-```
-
-Fill it with the following:
-
-```
-VITE_BACK_END_SERVER_URL=http://localhost:3001
-```
-
-> 🚨 DO NOT place secrets in this `.env` file. The contents of this file WILL be exposed to site visitors. We are only using the front-end .env to create variables specific to the environment the application is running in.
-
-Ensure the project starts up with:
-
-```bash
-npm run dev
-```
-
-Delete this README.md, then make an initial commit:
-
-```bash
-git add .
-git commit -m "initial commit"
-git push origin main
-```
-
-You're done!
-
-Photo by <a href="https://unsplash.com/@srosinger3997?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Samantha Gades</a> on <a href="https://unsplash.com/photos/BlIhVfXbi9s?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+## Credit
