@@ -2,7 +2,7 @@
 import styles from "./PostPage.module.css";
 
 // types
-import { Post } from "../../types/models";
+import { Post, Profile } from "../../types/models";
 import { User } from "../../types/models";
 
 // components

@@ -32,15 +32,6 @@ const PostCard = (props: PostCardProps): JSX.Element => {
     }
   };
 
-  // const handleUpdate = async () => {
-  //   try {
-  //     await postService.update(formData, post.id);
-  //     navigate(`/posts`);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const postDate = new Date(post.date);
   const currentDate = new Date();
   const timeDiff = Math.abs(currentDate.getTime() - postDate.getTime());
@@ -51,11 +42,12 @@ const PostCard = (props: PostCardProps): JSX.Element => {
       <div className={styles.box}>
         <h3>{post.title}</h3>
         <p>{numDays} days past</p>
-        {user && <button className={styles.delBtn} onClick={handleDelete}></button>}
+        {user && (
+          <button className={styles.delBtn} onClick={handleDelete}></button>
+        )}
       </div>
     </div>
   );
 };
 
 export default PostCard;
-// props: PostCardProps: JSX.Element;

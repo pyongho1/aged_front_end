@@ -48,36 +48,6 @@ function App(): JSX.Element {
     }
   };
 
-  // const handleUpdate = async (formData: PostFormData) => {
-  //   // const updatedPost = await postService.update(formData);
-  //   const updatedPosts = await postService.getAllPosts();
-  //   setPosts(updatedPosts);
-  //   navigate("/posts");
-  // };
-
-  // const handleUpdate = async (
-  //   formData: PostFormData,
-  //   postId: number
-  // ): Promise<void> => {
-  //   try {
-  //     const updatedPost = await postService.update({ post });
-  //     console.log("UPDATED POST", updatedPost);
-  //     setPosts((prevPosts) =>
-  //       prevPosts.map((post) =>
-  //         post.id === updatedPost.id ? updatedPost : post
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const handleUpdate = async (updatedPost: Post) => {
-  //   const newPost = await postService.update(updatedPost);
-  //   setPosts(posts.map((post) => (post.id === newPost.id ? newPost : post)));
-  //   navigate("/posts");
-  // };
-
   const handleLogout = (): void => {
     authService.logout();
     setUser(null);
