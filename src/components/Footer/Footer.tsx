@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
-        <p>@Yong Park</p>
         <a href="/">Go to Aged Homepage</a>
+        <p>@Yong Park</p>
       </div>
     </div>
   );

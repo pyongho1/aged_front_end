@@ -28,6 +28,7 @@ import "./App.css";
 // types
 import { User, Post } from "./types/models";
 import { PostFormData } from "./types/forms";
+import Footer from "./components/Footer/Footer";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -153,6 +154,7 @@ function App(): JSX.Element {
           }
         /> */}
       </Routes>
+      <Footer />
     </>
   );
 }
