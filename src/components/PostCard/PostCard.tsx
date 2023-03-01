@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // types
-import { Post } from "../../types/models";
+import { Post, Profile } from "../../types/models";
 import { User } from "../../types/models";
 
 // styles
@@ -16,12 +16,26 @@ import Landing from "../../pages/Landing/Landing";
 interface PostCardProps {
   post: Post;
   user: User | null;
+  profile: Profile;
 }
 
 const PostCard = (props: PostCardProps): JSX.Element => {
-  const { post, user } = props;
+  const { post, user, profile } = props;
   const navigate = useNavigate();
   const [posts, setPosts] = useState<Post[]>([]);
+  // const [profiles, setProfiles] = useState<Profile[]>([]);
+
+  // useEffect((): void => {
+  //   const fetchProfiles = async (): Promise<void> => {
+  //     try {
+  //       const profileData: Profile[] = await profileService.getAllProfiles();
+  //       setProfiles(profileData);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   user ? fetchProfiles() : setProfiles([]);
+  // }, [user]);
 
   const handleDelete = async () => {
     try {
@@ -40,6 +54,12 @@ const PostCard = (props: PostCardProps): JSX.Element => {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
+        <h5>{profile?.name}</h5>
+        <img
+          src={profile?.photo}
+          className={styles.profilePic}
+          alt="profile pic"
+        />
         <h3>{post.title}</h3>
         <p>{numDays} days past</p>
         {user && (

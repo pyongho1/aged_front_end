@@ -61,3 +61,7 @@
 .box > button:hover::before {
   content: "X";
 }
+
+.profilePic {
+  width: 50px;
+}

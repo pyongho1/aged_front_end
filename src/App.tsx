@@ -21,12 +21,13 @@ import PostForm from "./pages/PostForm/PostForm";
 // services
 import * as authService from "./services/authService";
 import * as postService from "./services/postService";
+import * as profileService from "./services/profileService";
 
 // stylesheets
 import "./App.css";
 
 // types
-import { User, Post } from "./types/models";
+import { User, Post, Profile } from "./types/models";
 import { PostFormData } from "./types/forms";
 import Footer from "./components/Footer/Footer";
 
@@ -34,6 +35,8 @@ function App(): JSX.Element {
   const navigate = useNavigate();
 
   const [user, setUser] = useState<User | null>(authService.getUser());
+
+  const [profiles, setProfiles] = useState<Profile[]>([]);
 
   const [posts, setPosts] = useState<Post[]>([]);
 
@@ -70,6 +73,18 @@ function App(): JSX.Element {
     user ? fetchPosts() : setPosts([]);
   }, [user]);
 
+  useEffect((): void => {
+    const fetchProfiles = async (): Promise<void> => {
+      try {
+        const profileData: Profile[] = await profileService.getAllProfiles();
+        setProfiles(profileData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    user ? fetchProfiles() : setProfiles([]);
+  }, [user]);
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -103,7 +118,7 @@ function App(): JSX.Element {
           path="/posts"
           element={
             <ProtectedRoute user={user}>
-              <PostPage user={user} posts={posts} />
+              <PostPage user={user} posts={posts} profiles={profiles} />
             </ProtectedRoute>
           }
         />

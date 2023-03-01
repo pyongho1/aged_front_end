@@ -11,10 +11,11 @@ import PostCard from "../../components/PostCard/PostCard";
 interface PostProps {
   posts: Post[];
   user: User | null;
+  profiles: Profile[];
 }
 
 const PostPage = (props: PostProps) => {
-  const { posts, user } = props;
+  const { posts, user, profiles } = props;
 
   if (!posts.length)
     return (
@@ -26,9 +27,14 @@ const PostPage = (props: PostProps) => {
       <h2>See how many days have passed!</h2>
       <p>⚠️ Click on the left side of the sphere to delete</p>
       <div className={styles.cardContainer}>
-        {posts.map((post: Post) => (
-          <PostCard key={post.id} post={post} user={user} />
-        ))}
+        {posts.map((post: Post) => {
+          const profile = profiles.find(
+            (profile: Profile) => profile.id === post.profileId
+          );
+          return (
+            <PostCard key={post.id} post={post} user={user} profile={profile} />
+          );
+        })}
       </div>
     </div>
   );
